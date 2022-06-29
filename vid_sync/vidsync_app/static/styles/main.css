@@ -81,7 +81,14 @@ body {
         font-size: 24px;
     }
 }
+
+
 /* ----------Room styling ------------ */
+
+#player {
+    height: 99vh;
+    
+}
 
 #room-name-wrapper {
     text-align: center;
@@ -133,8 +140,17 @@ body {
     .video-container{
         flex-basis: 300px;
         min-height: 200px;
-    }    
+    }  
 }
+
+@media screen and (max-width:1000px){
+    #player {
+        height: 50vh;
+        
+    }
+}
+
+
 
 /* --------- Room Styling | Control -------------- */
 
