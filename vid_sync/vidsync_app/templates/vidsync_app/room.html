@@ -8,25 +8,32 @@
         <div id="player" class="w-100"></div>
       </div>
       <div class="col-lg-2">
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
-        <h1>heya</h1>
+        <section id="room-name-wrapper">
+
+          <p>Room Name: <span id="room-name"></span></p>
+  
+      </section>
+  
+      <section id="video-streams"></section>
+  
+      <section id="controls-wrapper">
+          <div class="icon-wrapper">
+              <img id="mic-btn" class="control-icon-vdo" src="{% static 'images/microphone.svg' %}"/>
+          </div>
+          <div class="icon-wrapper">
+              <img id="camera-btn" class="control-icon-vdo" src="{% static 'images/video.svg' %}"/>
+          </div>
+          <div class="icon-wrapper">
+              <img id="leave-btn" class="control-icon" src="{% static 'images/leave.png' %}"/>
+          </div>
+      </section>
 
       </div>
     </div>
   </div>
 
 <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.12.1.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
+<!-- <script type="text/javascript" src="{% static 'js/streams.js' %}"></script> -->
 <script type="text/javascript" src="{% static 'js/yt.js' %}"></script>
 
 {% endblock content %}
