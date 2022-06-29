@@ -94,12 +94,13 @@ body {
 #room-name-wrapper {
     text-align: center;
     font-size: 18px;
+    margin: 10px;
 }
 
 #video-streams {
     display: flex;
     flex-wrap: wrap;
-    height: 85vh;
+    height: 83vh;
     width: 75%;
     margin: 0 auto;
 }
@@ -137,28 +138,27 @@ body {
     color: #fff;
 }
 
-@media screen and (max-width: 1650px) {
+@media screen and (max-width: 1000px) {
     .video-container{
         flex-basis: 300px;
         min-height: 200px;
-    }    
+    }  
+    
+    #video-streams {
+        height: 33vh;
+    }
 }
 
 /* --------- Room Styling | Control -------------- */
 
 
-#controls-wrapper {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    column-gap: 1em;
+#icon-group {
     position: fixed;
-    bottom: 20px;
 }
 
-.control-icon {
-    height: 20px;
-    width: 20px;
+.control-icon-vdo {
+    height: 40px;
+    width: 40px;
     box-shadow: var(--shadow);
     background-color: #fff;
     cursor: pointer;

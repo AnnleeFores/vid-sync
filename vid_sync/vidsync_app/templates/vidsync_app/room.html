@@ -7,7 +7,7 @@
       <div class="col-lg-10 p-0">
         <div id="player" class="w-100"></div>
       </div>
-      <div class="col-lg-2">
+      <div class="col-lg-2 ">
         <section id="room-name-wrapper">
 
           <p>Room Name: <span id="room-name"></span></p>
@@ -15,18 +15,19 @@
       </section>
   
       <section id="video-streams"></section>
-  
-      <section id="controls-wrapper">
+      
+      <div class="d-flex justify-content-center icon-group">
           <div class="icon-wrapper">
-              <img id="mic-btn" class="control-icon-vdo" src="{% static 'images/microphone.svg' %}"/>
+              <img id="mic-btn" class="control-icon-vdo m-2" src="{% static 'images/microphone.svg' %}"/>
           </div>
           <div class="icon-wrapper">
-              <img id="camera-btn" class="control-icon-vdo" src="{% static 'images/video.svg' %}"/>
+              <img id="camera-btn" class="control-icon-vdo m-2" src="{% static 'images/video.svg' %}"/>
           </div>
           <div class="icon-wrapper">
-              <img id="leave-btn" class="control-icon" src="{% static 'images/leave.png' %}"/>
+              <img id="leave-btn" class="control-icon-vdo m-2" src="{% static 'images/leave.png' %}"/>
           </div>
-      </section>
+      </div>
+      
 
       </div>
     </div>
