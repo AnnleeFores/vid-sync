@@ -8,13 +8,18 @@
         <div id="player" class="w-100"></div>
       </div>
       <div class="col-lg-2 ">
-        <section id="room-name-wrapper">
 
+        <section id="room-name-wrapper">
           <p>Room Name: <span id="room-name"></span></p>
-  
       </section>
+
+      <div class="row row-cols-1 row-cols-sm-1 g-2">
+        <section id="video-streams"></section>
+        
+
+      </div>
   
-      <section id="video-streams"></section>
+      
       
       <div class="d-flex justify-content-center icon-group">
           <div class="icon-wrapper">
@@ -34,7 +39,7 @@
   </div>
 
 <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.12.1.js' %}"></script>
-<!-- <script type="text/javascript" src="{% static 'js/streams.js' %}"></script> -->
+<script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/yt.js' %}"></script>
 
 {% endblock content %}
