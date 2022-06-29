@@ -1,0 +1,31 @@
+
+{% extends 'vidsync_app/layout.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<main>
+    <section id="form-container">
+
+        <div id="welcome-message">
+            <h1>Vid Sync</h1>
+            <p>A group sync youtube application with video chat for you and your friends!</p>
+        </div>
+
+        <form id="form">
+            <div class="form-field">
+                <input type="text" name="room" placeholder="Enter a room name.." style="text-transform: uppercase;"/>
+            </div>
+
+            <div class="form-field">
+                <input type="text" name="username" placeholder="Enter your name.." style="text-transform: uppercase;"/>
+            </div>
+
+            <div class="form-field">
+                <input type="submit" value="Join Sync" />
+            </div>
+        </form>
+</main>
+
+{% endblock content %}
