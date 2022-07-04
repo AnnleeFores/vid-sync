@@ -94,7 +94,7 @@
     border: 1px solid inherit;
     border-radius: 5px;
     margin: 2px;
-    background-color: inherit;
+    background-color: black;
     position: relative;
 }
 
@@ -152,7 +152,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {

@@ -139,9 +139,31 @@ let deleteMember = async () => {
     })
 }
 
+let chat = async (e) => {
+
+    let text = sessionStorage.getItem('text')
+
+    let response = await fetch(`/chat/`, {
+        method:'POST',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify({'text': text, 'room_name':CHANNEL, 'UID':UID})
+    })
+    let member = await response.json()
+    console.log(member)
+}
+
+let send = async () => {
+    let text = sessionStorage.getItem('text')
+    console.log(text)
+}
+
 joinAndDisplayLocalStream()
 
 window.addEventListener('beforeunload', deleteMember)
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
+document.getElementById('chat-btn').addEventListener('click', chat)
+document.getElementById('send-btn').addEventListener('click', send)

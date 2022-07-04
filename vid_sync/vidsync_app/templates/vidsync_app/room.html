@@ -22,6 +22,9 @@
                 <img id="camera-btn" class="control-icon" src="{% static 'images/video.svg' %}"/>
             </div>
             <div class="icon-wrapper">
+                <img id="chat-btn" class="control-icon" src="{% static 'images/chat.png' %}"/>
+            </div>
+            <div class="icon-wrapper">
                 <img id="leave-btn" class="control-icon" src="{% static 'images/leave.png' %}"/>
             </div>
         </section>
@@ -29,43 +32,22 @@
     </div>
     </div>
     <div class="col-lg-3 border-start border-end border-top border-secondary">
-      <h5 class="text-center my-2">Chat Box</h5>
+      <p class="text-center my-2">Chat Box</p>
       <div class="border-top border-bottom border-secondary" style="overflow-y: scroll; height:85vh;">
         
         <div class="my-4 "><span class="chatmsg">Heya</span></div>
-        <div class="my-4"><span class="chatmsg">Heya</span></div>
         <div class="my-4 text-end"><span class="chatmsg">Heya</span></div>
-        <div class="my-4"><span class="chatmsg">Heya</span></div>
-        <div class="my-4"><span class="chatmsg">Heya</span></div>
-        <div class="my-4 text-end"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhdfbfdbfbbc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj fbdfbdfbadsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj afbddfbfbdsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4 text-end"><span class="chatmsg">abchbckhsdachadschj dshcj dffbdfdbadsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4 text-end"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
-        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
- 
- 
-        
-        
+      
     </div>
     <div class=" mt-2">
-      message
+      <form id="chatform" class="row g-2">
+        <div class="col-lg-10 ">
+          <input type="text" class="form-control" id="text" placeholder="Type....">
+        </div>
+        <div class="col-2">
+          <button type="submit" id="send-btn" class="btn btn-primary mb-3">Send</button>
+        </div>
+      </form>
     </div>
     </div>
   </div>
@@ -76,5 +58,23 @@
 
 <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.12.1.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/videochat.js' %}"></script>
+
+<script type="text/javascript">
+
+  let form = document.getElementById('chatform')
+
+  let handleSubmit = async (e) => {
+      e.preventDefault()
+
+      let text = e.target.text.value
+      
+      sessionStorage.setItem('text', text)
+
+      document.getElementById('text').value = ""
+  }
+
+  form.addEventListener('submit', handleSubmit)
+
+</script>
 
 {% endblock content %}
