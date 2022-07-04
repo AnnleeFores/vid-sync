@@ -79,72 +79,79 @@ body {
 
 /* ----------Room styling ------------ */
 
-#player {
-    height: 99vh;
-    
-}
-
-@media screen and (max-width:1000px){
-    #player {
-        height: 50vh;
-        
-    }
-}
-
 #room-name-wrapper {
     text-align: center;
     font-size: 18px;
-    margin: 10px;
+}
+
+#video-streams {
+    display: flex;
+    flex-wrap: wrap;
+    height: 85vh;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.video-container {
+    flex-basis: 500px;
+    flex-grow: 1;
+    max-height: 100%;
+    min-height: 350px;
+    border: 1px solid rgb(75, 95, 172, 1);
+    border-radius: 5px;
+    margin: 2px;
+    background-color: rgba(198, 202, 219, 1);
+    position: relative;
 }
 
 .video-player {
-    height: 8rem;
-    width: 8rem;
+    height: 100%;
+    width: 100%;
 }
 
-/* .video-player > * {
+.video-player > * {
     border-radius: 5px;
-} */
+}
 
- .username-wrapper {
+.username-wrapper {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 10px;
+    left: 10px;
     z-index: 9999;
     background-color: rgba(0,0,0, 0.3);
-    padding: 5px;
-    border-radius: 3px;
+    padding: 10px;
+    border-radius: 5px;
     font-size: 14px;
     color: #fff;
 }
 
-@media screen and (max-width: 1000px) {
-    /* .video-container{
+@media screen and (max-width: 1650px) {
+    .video-container{
         flex-basis: 300px;
         min-height: 200px;
-    }  
-    
-    #video-streams {
-        height: 33vh;
-    } */
-
+    }    
 }
 
 /* --------- Room Styling | Control -------------- */
 
-/* 
-#icon-group {
-    position: fixed;
-} */
 
-.control-icon-vdo {
-    height: 40px;
-    width: 40px;
+#controls-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    column-gap: 1em;
+    position: fixed;
+    bottom: 20px;
+}
+
+.control-icon {
+    height: 20px;
+    width: 20px;
     box-shadow: var(--shadow);
     background-color: #fff;
     cursor: pointer;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 #leave-btn {

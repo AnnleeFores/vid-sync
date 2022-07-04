@@ -35,14 +35,10 @@ let joinAndDisplayLocalStream = async () => {
           
 
 
-    let player = `<div class="col mb-4 mx-auto" style="width: 200px;">
-                    <div class="card h-100">
-                    <div class="video-container" id="user-container-${UID}">
-                    <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
-                    <div class="video-player" id="user-${UID}"></div>
-                </div>
-                </div>
-                </div>`
+    let player = `<div class="video-container" id="user-container-${UID}">
+    <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
+    <div class="video-player" id="user-${UID}"></div>
+</div>`
 
     document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
 
@@ -63,14 +59,10 @@ let handleUserJoined = async (user, mediaType) => {
 
         let member = await getMember(user)
         
-        player = `<div class="col mb-4 mx-auto" style="width: 200px;">
-                    <div class="card h-100">
-                    <div class="video-container" id="user-container-${user.uid}">
-                    <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
-                    <div class="video-player" id="user-${user.uid}"></div>
-                </div>
-                </div>
-                </div>`
+        player = `<div class="video-container" id="user-container-${user.uid}">
+        <div class="username-wrapper"><span class="user-name">${member.name}</span></div>
+        <div class="video-player" id="user-${user.uid}"></div>
+    </div>`
 
         document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
         user.videoTrack.play(`user-${user.uid}`)

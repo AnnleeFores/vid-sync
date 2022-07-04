@@ -2,77 +2,29 @@
 {% load static %}
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-10 p-0">
-        <div id="player" class="w-100"></div>
-      </div>
-      
-      <div class="col-lg-2">
+<main>
+    <section id="room-name-wrapper">
 
-        <section id="room-name-wrapper">
-          <p>Room Name: <span id="room-name"></span></p>
-      </section>
+        <p>Room Name: <span id="room-name"></span></p>
 
-      <div class="row row-cols-4 row-cols-lg-1 text-dark">
-        <div class="col mb-4 mx-auto" style="width: 150px;">
-          <div class="card h-100">
-              <h5 class="card-title"><strong>hoi</strong></h5>
-              <h5 class="card-title"><strong>hoi</strong></h5>
-              <h5 class="card-title"><strong>hoi</strong></h5>
-              <p class="card-text">heya</p>
-            </div>
+    </section>
+
+    <section id="video-streams"></section>
+
+    <section id="controls-wrapper">
+        <div class="icon-wrapper">
+            <img id="mic-btn" class="control-icon" src="{% static 'images/microphone.svg' %}"/>
         </div>
-        <div class="col mb-4 mx-auto" style="width: 150px;">
-          <div class="card h-100">
-            <h5 class="card-title"><strong>hoi</strong></h5>
-            <h5 class="card-title"><strong>hoi</strong></h5>
-            <h5 class="card-title"><strong>hoi</strong></h5>
-              <p class="card-text">heya</p>
-            </div>
+        <div class="icon-wrapper">
+            <img id="camera-btn" class="control-icon" src="{% static 'images/video.svg' %}"/>
         </div>
-        <div class="col mb-4 mx-auto" style="width: 150px;">
-          <div class="card h-100">
-            <h5 class="card-title"><strong>hoi</strong></h5>
-            <h5 class="card-title"><strong>hoi</strong></h5>
-            <h5 class="card-title"><strong>hoi</strong></h5>
-              <p class="card-text">heya</p>
-            </div>
+        <div class="icon-wrapper">
+            <img id="leave-btn" class="control-icon" src="{% static 'images/leave.png' %}"/>
         </div>
-        <div class="col mb-4 mx-auto" style="width: 150px;">
-          <div class="card h-100">
-            <h5 class="card-title"><strong>hoi</strong></h5>
-            <h5 class="card-title"><strong>hoi</strong></h5>
-            <h5 class="card-title"><strong>hoi</strong></h5>
-              <p class="card-text">heya</p>
-            </div>
-        </div>
-      </div>
+    </section>
 
-      <!-- <div class="row row-cols-4 row-cols-lg-1 text-dark text-center">
-        <section id="video-streams"></section>
-      </div> -->
-
-      
-      <div class="d-flex justify-content-center align-self-end">
-          <div class="icon-wrapper">
-              <img id="mic-btn" class="control-icon-vdo m-2" src="{% static 'images/microphone.svg' %}"/>
-          </div>
-          <div class="icon-wrapper">
-              <img id="camera-btn" class="control-icon-vdo m-2" src="{% static 'images/video.svg' %}"/>
-          </div>
-          <div class="icon-wrapper">
-              <img id="leave-btn" class="control-icon-vdo m-2" src="{% static 'images/leave.png' %}"/>
-          </div>
-      </div>
-      
-
-      </div>
-    </div>
-  </div>
-
+</main>
 <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.12.1.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/yt.js' %}"></script>
 
 {% endblock content %}
