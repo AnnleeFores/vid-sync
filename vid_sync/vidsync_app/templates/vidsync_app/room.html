@@ -2,29 +2,79 @@
 {% load static %}
 {% block content %}
 
-<main>
-    <section id="room-name-wrapper">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-9 p-0">
+      <div>
+        <section id="room-name-wrapper">
+    
+            <h5 id="room-name"></h5>
+    
+        </section>
+    
+        <section id="video-streams"></section>
+    
+        <section class="my-3" id="controls-wrapper">
+            <div class="icon-wrapper">
+                <img id="mic-btn" class="control-icon" src="{% static 'images/microphone.svg' %}"/>
+            </div>
+            <div class="icon-wrapper">
+                <img id="camera-btn" class="control-icon" src="{% static 'images/video.svg' %}"/>
+            </div>
+            <div class="icon-wrapper">
+                <img id="leave-btn" class="control-icon" src="{% static 'images/leave.png' %}"/>
+            </div>
+        </section>
+    
+    </div>
+    </div>
+    <div class="col-lg-3 border-start border-end border-top border-secondary">
+      <h5 class="text-center my-2">Chat Box</h5>
+      <div class="border-top border-bottom border-secondary" style="overflow-y: scroll; height:85vh;">
+        
+        <div class="my-4 "><span class="chatmsg">Heya</span></div>
+        <div class="my-4"><span class="chatmsg">Heya</span></div>
+        <div class="my-4 text-end"><span class="chatmsg">Heya</span></div>
+        <div class="my-4"><span class="chatmsg">Heya</span></div>
+        <div class="my-4"><span class="chatmsg">Heya</span></div>
+        <div class="my-4 text-end"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhdfbfdbfbbc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj fbdfbdfbadsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj afbddfbfbdsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4 text-end"><span class="chatmsg">abchbckhsdachadschj dshcj dffbdfdbadsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4 text-end"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+        <div class="my-4"><span class="chatmsg">abchbckhsdachadschj dshcj adsjhc</span></div>
+ 
+ 
+        
+        
+    </div>
+    <div class=" mt-2">
+      message
+    </div>
+    </div>
+  </div>
+</div>
 
-        <p>Room Name: <span id="room-name"></span></p>
 
-    </section>
 
-    <section id="video-streams"></section>
 
-    <section id="controls-wrapper">
-        <div class="icon-wrapper">
-            <img id="mic-btn" class="control-icon" src="{% static 'images/microphone.svg' %}"/>
-        </div>
-        <div class="icon-wrapper">
-            <img id="camera-btn" class="control-icon" src="{% static 'images/video.svg' %}"/>
-        </div>
-        <div class="icon-wrapper">
-            <img id="leave-btn" class="control-icon" src="{% static 'images/leave.png' %}"/>
-        </div>
-    </section>
-
-</main>
 <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.12.1.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/streams.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/videochat.js' %}"></script>
 
 {% endblock content %}
