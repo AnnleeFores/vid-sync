@@ -191,7 +191,6 @@ let getmsg = async () => {
       
       
         let the_tid = await getmsg()
-        console.log(the_tid)
         let elem = document.getElementById(the_tid);
         elem.scrollIntoView({ block: 'center', inline: 'start' })
 
@@ -217,9 +216,6 @@ let enable_chat = async (e) => {
     }
     
 }
-
-  
-
 
 
 joinAndDisplayLocalStream()
