@@ -143,6 +143,32 @@ let deleteMember = async () => {
     })
 }
 
+let getmsg = async () => {
+
+    let chats = await fetch(`/chat/${CHANNEL}`)
+    let chat = await chats.json()
+
+    let chatmsg = ''
+    let tid = ''
+
+    chat.forEach(element => {
+
+        tid = `t${element.id}`
+        let ifthere = document.getElementById(tid);
+
+        if (ifthere === null) {
+            if (Number(element.uid) === UID) {
+                chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-end"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg" style="max-width: 100px;">${element.chat}</span></div>`
+                document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
+            } else {
+                chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-start"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg">${element.chat}</span></div>`
+                document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
+            }
+        }
+  });
+  return tid;
+}
+
 
   let chat = async (e) => {
       e.preventDefault()
@@ -164,45 +190,18 @@ let deleteMember = async () => {
 
       document.getElementById('msgbox').value = ''
 
-      let getmsg = async () => {
-
-        
-
-        let chats = await fetch(`/chat/${CHANNEL}`)
-        let chat = await chats.json()
-
-        let chatmsg = ''
-        let tid = ''
-
-        chat.forEach(element => {
-
-            tid = `t${element.id}`
-            let ifthere = document.getElementById(tid);
-
-            if (ifthere === null) {
-                if (Number(element.uid) === UID) {
-                    chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-end"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg" style="max-width: 100px;">${element.chat}</span></div>`
-                    document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
-                } else {
-                    chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-start"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg">${element.chat}</span></div>`
-                    document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
-                }
-            }
-      });
-      return tid;
-      }
       
-    let the_tid = await getmsg()
-    console.log(the_tid)
-    let elem = document.getElementById(the_tid);
-    elem.scrollIntoView({ block: 'center', inline: 'start' })
+      
+        let the_tid = await getmsg()
+        console.log(the_tid)
+        let elem = document.getElementById(the_tid);
+        elem.scrollIntoView({ block: 'center', inline: 'start' })
 
-    setInterval(getmsg, 3000);
+    
   }
 
   
-
- 
+setInterval(getmsg, 2000);
 
 
 joinAndDisplayLocalStream()
