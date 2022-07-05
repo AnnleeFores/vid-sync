@@ -151,6 +151,8 @@
     background-color: rgb(255, 80, 80, 1);
 }
 
+/* --------- Chat section styling  -------------- */
+
 ::-webkit-scrollbar {
     width: 6px;
 }

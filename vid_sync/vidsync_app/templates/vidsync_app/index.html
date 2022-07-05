@@ -29,6 +29,8 @@
 </main>
 
 <script type="text/javascript">
+
+    // collects the input details of user
     let form = document.getElementById('form')
 
     let handleSubmit = async (e) => {
@@ -37,6 +39,7 @@
         let room = e.target.room.value.toUpperCase()
         let name = e.target.username.value
 
+        // fetches the token and UID from server side and stores them inside sessionStorage
         let response = await fetch(`/get_token/?channel=${room}`)
         let data = await response.json()
 
@@ -50,6 +53,7 @@
         sessionStorage.setItem('room', room)
         sessionStorage.setItem('name', name)
 
+        // if successfull move to room.html
         window.open('/room/', '_self')
     }
 

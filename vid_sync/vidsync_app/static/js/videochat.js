@@ -1,15 +1,17 @@
-
+// collects details from session storage
 const APP_ID = '98677a6e35094190875e4203aaf61771'
 const CHANNEL = sessionStorage.getItem('room')
 const TOKEN = sessionStorage.getItem('token')
 let UID = Number(sessionStorage.getItem('UID'))
 let NAME = sessionStorage.getItem('name')
 
+// enables Agora RTC client
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
 let localTracks = []
 let remoteUsers = {}
 
+// provides local stream of videochat
 let joinAndDisplayLocalStream = async () => {
 
     document.getElementById('room-name').innerText = CHANNEL
@@ -46,6 +48,7 @@ let joinAndDisplayLocalStream = async () => {
     await client.publish([localTracks[0], localTracks[1]])
 }
 
+// function to handle joining users
 let handleUserJoined = async (user, mediaType) => {
     remoteUsers[user.uid] = user
     await client.subscribe(user, mediaType)
@@ -72,12 +75,13 @@ let handleUserJoined = async (user, mediaType) => {
     }
 }
 
-
+// function to delete user display when a person leaves
 let handleUserLeft = async (user) => {
     delete remoteUsers[user.uid]
     document.getElementById(`user-container-${user.uid}`).remove()
 }
 
+// function to remove local stream and remove member
 let leaveAndRemoveLocalStream = async () => {
     for (let i = 0; localTracks.length > i; i++) {
         localTracks[i].stop()
@@ -89,6 +93,7 @@ let leaveAndRemoveLocalStream = async () => {
     window.open('/', '_self')
 }
 
+// camera toggle function
 let toggleCamera = async (e) => {
     if(localTracks[1].muted){
         await localTracks[1].setMuted(false)
@@ -99,6 +104,7 @@ let toggleCamera = async (e) => {
     }
 }
 
+// mic toggle function
 let toggleMic = async (e) => {
     if(localTracks[0].muted){
         await localTracks[0].setMuted(false)
@@ -109,6 +115,7 @@ let toggleMic = async (e) => {
     }
 }
 
+// POST createmember data to server to be stored in database
 let createMember = async () => {
 
     let response = await fetch(`/create_member/`, {
@@ -122,13 +129,14 @@ let createMember = async () => {
     return member
 }
 
-
+// get member details from database
 let getMember = async (user) => {
     let response = await fetch(`/get_member/?UID=${user.uid}&room_name=${CHANNEL}`)
     let member = await response.json()
     return member
 }
 
+// delete a member from stream and database
 let deleteMember = async () => {
 
     let response = await fetch(`/delete_member/`, {
@@ -141,6 +149,7 @@ let deleteMember = async () => {
     })
 }
 
+// function to get chat from database and display them on chat section
 let getmsg = async () => {
 
     let chats = await fetch(`/chat/${CHANNEL}`)
@@ -167,7 +176,7 @@ let getmsg = async () => {
   return tid;
 }
 
-
+    // function to POST text chat to database
   let chat = async (e) => {
       e.preventDefault()
 
@@ -199,10 +208,10 @@ let getmsg = async () => {
 
 
   
-
+// function to enable and disable chat section
 let enable_chat = async (e) => {
 
-    let thiselem = document.getElementById("videoaudiopart").classList
+    let thiselem = document.getElementById("videoaudiopart").classList  
     
     if(thiselem[1] === "col-lg-9"){
         thiselem.remove("col-lg-9");
@@ -211,7 +220,7 @@ let enable_chat = async (e) => {
     } else {
         setInterval(getmsg, 2000);
         thiselem.add("col-lg-9")
-        document.getElementById("chatpart").style.display = "block";
+        document.getElementById("chatpart").style.display = "block"; //displays chat section when clicked
         e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)'
     }
     
@@ -219,6 +228,8 @@ let enable_chat = async (e) => {
 
 
 joinAndDisplayLocalStream()
+
+// various event listeners
 
 window.addEventListener('beforeunload', deleteMember)
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)

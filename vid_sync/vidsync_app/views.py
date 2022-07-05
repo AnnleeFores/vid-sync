@@ -14,8 +14,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 load_dotenv()
 
-
+# gets token from Agora, generates random UID in between 1 - 230 and sends it to index.html
 def getToken(request):
+
+    #env variables
     appId = os.getenv('appId')
     appCertificate = os.getenv('appCertificate')
     channelName = request.GET.get('channel')
@@ -25,17 +27,21 @@ def getToken(request):
     privilegeExpiredTs = currentTimeStamp + expirationTimeInSeconds
     role = 1
 
+    # using agora_token_builder module to generate token
     token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
     return JsonResponse({'token': token, 
     'uid': uid}, 
     safe=False)
 
+# displays the index page
 def index(request):
     return render(request, 'vidsync_app/index.html')
 
+# renders the room page with video chat and text chat feature
 def room(request):
     return render(request, 'vidsync_app/room.html')
 
+# API view to store member details or update them when needed
 @csrf_exempt
 def createMember(request):
     data = json.loads(request.body)
@@ -48,6 +54,7 @@ def createMember(request):
     return JsonResponse({'name': data['name']}, safe=False)
 
 
+# API view to get the name of the user based on UID & room name
 def getMember(request):
     uid = request.GET.get('UID')
     room_name = request.GET.get('room_name')
@@ -60,6 +67,7 @@ def getMember(request):
     name = member.name
     return JsonResponse({'name': name}, safe=False)
 
+# API view to delete a member from database
 @csrf_exempt
 def deleteMember(request):
     data = json.loads(request.body)
@@ -77,6 +85,7 @@ def deleteMember(request):
 
     return JsonResponse("member was deleted", safe=False)
 
+# RESTful API view to store and collect chat details
 @csrf_exempt
 def chat(request, room_name):
 
