@@ -1,12 +1,9 @@
+
 const APP_ID = '98677a6e35094190875e4203aaf61771'
 const CHANNEL = sessionStorage.getItem('room')
 const TOKEN = sessionStorage.getItem('token')
 let UID = Number(sessionStorage.getItem('UID'))
 let NAME = sessionStorage.getItem('name')
-
-
-
-
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
@@ -202,13 +199,10 @@ let getmsg = async () => {
   }
 
 
-  document.getElementById("chatpart").style.display = "none";
+  
 
 let enable_chat = async (e) => {
 
-
-    setInterval(getmsg, 2000);
-    
     let thiselem = document.getElementById("videoaudiopart").classList
     
     if(thiselem[1] === "col-lg-9"){
@@ -216,6 +210,7 @@ let enable_chat = async (e) => {
         document.getElementById("chatpart").style.display = "none";
         e.target.style.backgroundColor = '#fff'
     } else {
+        setInterval(getmsg, 2000);
         thiselem.add("col-lg-9")
         document.getElementById("chatpart").style.display = "block";
         e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)'
