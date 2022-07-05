@@ -4,7 +4,7 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-lg-9 p-0">
+    <div id="videoaudiopart" class="p-0">
       <div>
         <section id="room-name-wrapper">
     
@@ -22,19 +22,18 @@
                 <img id="camera-btn" class="control-icon" src="{% static 'images/video.svg' %}"/>
             </div>
             <div class="icon-wrapper">
+                <img id="chat-btn" class="control-icon" src="{% static 'images/chat.png' %}"/>
+            </div>
+            <div class="icon-wrapper">
                 <img id="leave-btn" class="control-icon" src="{% static 'images/leave.png' %}"/>
             </div>
         </section>
     
     </div>
     </div>
-    <div class="col-lg-3 border-start border-end border-top border-secondary">
+    <div id="chatpart" class="col-lg-3 border-start border-end border-top border-secondary">
       <p class="text-center my-2">Chat Box</p>
-      <div id="msgbox" class="border-top border-bottom border-secondary" style="overflow-y: scroll; overflow-x: hidden; height:85vh;">
-        
-        
-      
-    </div>
+      <div id="msgbox" class="border-top border-bottom border-secondary" style="overflow-y: scroll; overflow-x: hidden; height:85vh;"> </div>
     <div class=" mt-2">
       <form id="chatform" class="row g-2">
         <div class="col-lg-10 ">

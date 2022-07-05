@@ -7,6 +7,7 @@ let NAME = sessionStorage.getItem('name')
 
 
 
+
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
 let localTracks = []
@@ -200,6 +201,25 @@ let getmsg = async () => {
     
   }
 
+
+  document.getElementById("chatpart").style.display = "none";
+  
+let enable_chat = async (e) => {
+
+    let thiselem = document.getElementById("videoaudiopart").classList
+    
+    if(thiselem[1] === "col-lg-9"){
+        thiselem.remove("col-lg-9");
+        document.getElementById("chatpart").style.display = "none";
+        e.target.style.backgroundColor = '#fff'
+    } else {
+        thiselem.add("col-lg-9")
+        document.getElementById("chatpart").style.display = "block";
+        e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)'
+    }
+    
+}
+
   
 setInterval(getmsg, 2000);
 
@@ -210,4 +230,5 @@ window.addEventListener('beforeunload', deleteMember)
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
+document.getElementById('chat-btn').addEventListener('click', enable_chat)
 document.getElementById('chatform').addEventListener('submit', chat)
