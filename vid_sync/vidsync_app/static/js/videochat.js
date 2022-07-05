@@ -203,9 +203,12 @@ let getmsg = async () => {
 
 
   document.getElementById("chatpart").style.display = "none";
-  
+
 let enable_chat = async (e) => {
 
+
+    setInterval(getmsg, 2000);
+    
     let thiselem = document.getElementById("videoaudiopart").classList
     
     if(thiselem[1] === "col-lg-9"){
@@ -221,7 +224,7 @@ let enable_chat = async (e) => {
 }
 
   
-setInterval(getmsg, 2000);
+
 
 
 joinAndDisplayLocalStream()
