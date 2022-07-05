@@ -33,10 +33,9 @@
     </div>
     <div class="col-lg-3 border-start border-end border-top border-secondary">
       <p class="text-center my-2">Chat Box</p>
-      <div class="border-top border-bottom border-secondary" style="overflow-y: scroll; height:85vh;">
+      <div id="msgbox" class="border-top border-bottom border-secondary" style="overflow-y: scroll; overflow-x: hidden; height:85vh;">
         
-        <div class="my-4 "><span class="chatmsg">Heya</span></div>
-        <div class="my-4 text-end"><span class="chatmsg">Heya</span></div>
+        
       
     </div>
     <div class=" mt-2">
@@ -59,22 +58,5 @@
 <script type="text/javascript" src="{% static 'assets/AgoraRTC_N-4.12.1.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/videochat.js' %}"></script>
 
-<script type="text/javascript">
-
-  let form = document.getElementById('chatform')
-
-  let handleSubmit = async (e) => {
-      e.preventDefault()
-
-      let text = e.target.text.value
-      
-      sessionStorage.setItem('text', text)
-
-      document.getElementById('text').value = ""
-  }
-
-  form.addEventListener('submit', handleSubmit)
-
-</script>
 
 {% endblock content %}

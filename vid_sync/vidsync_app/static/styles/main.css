@@ -170,3 +170,9 @@
     background: #03883a;
     font-size: smaller;
 }
+
+.chatuser {
+    font-size: xx-small;
+
+    margin: 5px 0 5px 0;
+}

@@ -6,6 +6,7 @@ let NAME = sessionStorage.getItem('name')
 
 
 
+
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
 
 let localTracks = []
@@ -111,10 +112,11 @@ let toggleMic = async (e) => {
 }
 
 let createMember = async () => {
+
     let response = await fetch(`/create_member/`, {
         method:'POST',
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
         },
         body: JSON.stringify({'name': NAME, 'room_name':CHANNEL, 'UID':UID})
     })
@@ -130,34 +132,78 @@ let getMember = async (user) => {
 }
 
 let deleteMember = async () => {
+
     let response = await fetch(`/delete_member/`, {
         method:'POST',
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
+
         },
         body: JSON.stringify({'name': NAME, 'room_name':CHANNEL, 'UID':UID})
     })
 }
 
-let chat = async (e) => {
 
-    let text = sessionStorage.getItem('text')
+  let chat = async (e) => {
+      e.preventDefault()
 
-    let response = await fetch(`/chat/`, {
+
+      let text = e.target.text.value
+
+      let response = await fetch(`/chat/${CHANNEL}`, {
         method:'POST',
         headers: {
-            'Content-Type':'application/json'
+            'Content-Type':'application/json',
         },
-        body: JSON.stringify({'text': text, 'room_name':CHANNEL, 'UID':UID})
-    })
-    let member = await response.json()
-    console.log(member)
-}
+        body: JSON.stringify({'text': text, "name": NAME, "UID": UID})
+      })
+      let resp = await response.json()
+      console.log(resp)
 
-let send = async () => {
-    let text = sessionStorage.getItem('text')
-    console.log(text)
-}
+      document.getElementById('text').value = ""
+
+      document.getElementById('msgbox').value = ''
+
+      let getmsg = async () => {
+
+        
+
+        let chats = await fetch(`/chat/${CHANNEL}`)
+        let chat = await chats.json()
+
+        let chatmsg = ''
+        let tid = ''
+
+        chat.forEach(element => {
+
+            tid = `t${element.id}`
+            let ifthere = document.getElementById(tid);
+
+            if (ifthere === null) {
+                if (Number(element.uid) === UID) {
+                    chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-end"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg" style="max-width: 100px;">${element.chat}</span></div>`
+                    document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
+                } else {
+                    chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-start"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg">${element.chat}</span></div>`
+                    document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
+                }
+            }
+      });
+      return tid;
+      }
+      
+    let the_tid = await getmsg()
+    console.log(the_tid)
+    let elem = document.getElementById(the_tid);
+    elem.scrollIntoView({ block: 'center', inline: 'start' })
+
+    setInterval(getmsg, 3000);
+  }
+
+  
+
+ 
+
 
 joinAndDisplayLocalStream()
 
@@ -165,5 +211,5 @@ window.addEventListener('beforeunload', deleteMember)
 document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLocalStream)
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
-document.getElementById('chat-btn').addEventListener('click', chat)
-document.getElementById('send-btn').addEventListener('click', send)
+document.getElementById('chatform').addEventListener('submit', chat)
+// document.getElementById('chat-btn').addEventListener('click', send)

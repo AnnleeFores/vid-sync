@@ -8,3 +8,21 @@ class RoomMember(models.Model):
 
     def __str__(self):
         return self.name
+
+class Chat(models.Model):
+    member = models.ForeignKey(RoomMember, on_delete=models.CASCADE, related_name="member")
+    chat = models.CharField(max_length=400)
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.member}, {self.chat}, {self.date}"
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "chat": self.chat,
+            "name": self.member.name,
+            "uid": self.member.uid,
+            "room_name": self.member.room_name,
+            "timestamp": self.date.strftime("%I:%M %p")
+        }

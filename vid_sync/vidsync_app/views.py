@@ -5,9 +5,8 @@ import random
 import time
 import json
 
-from .models import RoomMember
+from .models import RoomMember, Chat
 # Create your views here.
-
 from django.views.decorators.csrf import csrf_exempt
 
 def getToken(request):
@@ -71,3 +70,30 @@ def deleteMember(request):
         pass
 
     return JsonResponse("member was deleted", safe=False)
+
+@csrf_exempt
+def chat(request, room_name):
+
+    if request.method == "POST":
+        data = json.loads(request.body)
+        chat=data['text']
+
+        try:
+            member = RoomMember.objects.get(
+                name=data['name'],
+                uid=data['UID'],
+                room_name=room_name,
+            )
+
+            chat = Chat.objects.create(member=member, chat=chat)
+        except:
+            pass
+
+        return JsonResponse({'message': 'success'}, safe=False)
+
+    else:
+        try:
+            chats = Chat.objects.filter(member__room_name=room_name).order_by("date")
+        except:
+            pass
+        return JsonResponse([chat.serialize() for chat in chats], safe=False)
