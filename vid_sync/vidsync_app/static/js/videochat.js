@@ -211,4 +211,3 @@ document.getElementById('leave-btn').addEventListener('click', leaveAndRemoveLoc
 document.getElementById('camera-btn').addEventListener('click', toggleCamera)
 document.getElementById('mic-btn').addEventListener('click', toggleMic)
 document.getElementById('chatform').addEventListener('submit', chat)
-// document.getElementById('chat-btn').addEventListener('click', send)
