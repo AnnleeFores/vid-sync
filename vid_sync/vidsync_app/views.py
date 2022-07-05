@@ -4,14 +4,20 @@ from agora_token_builder import RtcTokenBuilder
 import random
 import time
 import json
+import os
+from dotenv import load_dotenv
 
 from .models import RoomMember, Chat
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
+
+load_dotenv()
+
+
 def getToken(request):
-    appId = '98677a6e35094190875e4203aaf61771'
-    appCertificate = '4539b4a2851f4c10be4ce6c113a36360'
+    appId = os.getenv('appId')
+    appCertificate = os.getenv('appCertificate')
     channelName = request.GET.get('channel')
     uid = random.randint(1,230)
     expirationTimeInSeconds  = 3600 * 24
