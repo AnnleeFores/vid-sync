@@ -215,7 +215,7 @@ let enable_chat = async (e) => {
         document.getElementById("chatpart").style.display = "none";
         e.target.style.backgroundColor = '#fff'
     } else {
-        setInterval(getmsg, 2000);
+        setInterval(getmsg, 1000);
         thiselem.add("col-lg-9")
         document.getElementById("chatpart").style.display = "block"; //displays chat section when clicked
         e.target.style.backgroundColor = 'rgb(255, 80, 80, 1)'

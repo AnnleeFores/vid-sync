@@ -37,6 +37,8 @@ These are some of the other things I learned and put into practise during this p
 
 I couldn't figure out how to do this project without `@csrf_exempt`. Even though I was able to get the CSRF to work on a single session using this [documentation](https://docs.djangoproject.com/en/4.0/ref/csrf/), the CSRF verification failed when multiple sessions were running concurrently. So I'm still working on a solution for this. For the time being, it works flawlessly with `@csrf_exempt`.
 
+And it can currently handle upto 6 users per room after that the css starts breaking 
+
 ## How to run the application
 
 - Run to install required dependencies `pip install -r requirements.txt`
