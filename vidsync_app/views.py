@@ -86,7 +86,7 @@ def deleteMember(request):
 
     return JsonResponse("member was deleted", safe=False)
 
-# RESTful API view to store and collect chat details
+# API view to store and collect chat details
 @csrf_exempt
 def chat(request, room_name):
 

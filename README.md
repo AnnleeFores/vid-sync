@@ -31,12 +31,11 @@ This project primarily employs WebRTC to serve as a video chat platform. Because
 These are some of the other things I learned and put into practise during this project.
 
 - Data storage and retrieval from session storage.
-- Running API fetches every 2000ms to reduce chat latency.
-- How to Use Async/Await in JS
-- Developing RESTful APIs.
+- Running API fetches every 2000ms.
+- How to Use Async/Await in JS.
 - Designing a mobile-responsive frontend.
 
-I couldn't figure out how to do this project without `csrf_exempt`. Even though I was able to get the CSRF to work on a single session using this [documentation](https://docs.djangoproject.com/en/4.0/ref/csrf/), the CSRF verification failed when multiple sessions were running concurrently. So I'm still working on a solution for this. For the time being, it works flawlessly with `csrf_exempt`.
+I couldn't figure out how to do this project without `@csrf_exempt`. Even though I was able to get the CSRF to work on a single session using this [documentation](https://docs.djangoproject.com/en/4.0/ref/csrf/), the CSRF verification failed when multiple sessions were running concurrently. So I'm still working on a solution for this. For the time being, it works flawlessly with `@csrf_exempt`.
 
 ## How to run the application
 
