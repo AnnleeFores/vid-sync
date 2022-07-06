@@ -41,7 +41,6 @@ I couldn't figure out how to do this project without `csrf_exempt`. Even though 
 ## How to run the application
 
 - Run to install required dependencies `pip install -r requirements.txt`
-- Then change directory `cd vid_sync`
 - Go to [https://www.agora.io/en/](https://www.agora.io/en/) and sign up for an account
 - Create a new project under **Project Management**. Give it a name and for **use case** select **social → chatroom**
 - Select **secured mode** under **Authentication Mechanism** and click submit.
