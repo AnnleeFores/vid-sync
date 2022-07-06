@@ -42,31 +42,31 @@ def index(request):
 def room(request):
     return render(request, 'vidsync_app/room.html')
 
-# API view to store member details or update them when needed
+# API view to store, update and get member details them when needed
 @csrf_exempt
-def createMember(request):
-    data = json.loads(request.body)
+def member(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
 
-    member, created = RoomMember.objects.get_or_create(
-        name=data['name'],
-        uid=data['UID'],
-        room_name=data['room_name'] 
-    )
-    return JsonResponse({'name': data['name']}, safe=False)
+        member, created = RoomMember.objects.get_or_create(
+            name=data['name'],
+            uid=data['UID'],
+            room_name=data['room_name'] 
+        )
+        return JsonResponse({'name': data['name']}, safe=False)
+    else:
+        uid = request.GET.get('UID')
+        room_name = request.GET.get('room_name')
 
+        member = RoomMember.objects.get(
+            uid=uid,
+            room_name=room_name,
+        )
 
-# API view to get the name of the user based on UID & room name
-def getMember(request):
-    uid = request.GET.get('UID')
-    room_name = request.GET.get('room_name')
+        name = member.name
+        return JsonResponse({'name': name}, safe=False)
+        
 
-    member = RoomMember.objects.get(
-        uid=uid,
-        room_name=room_name,
-    )
-
-    name = member.name
-    return JsonResponse({'name': name}, safe=False)
 
 # API view to delete a member from database
 @csrf_exempt

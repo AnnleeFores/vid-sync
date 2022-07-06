@@ -7,8 +7,7 @@ urlpatterns = [
 
 
     path('get_token/', views.getToken),
-    path('create_member/', views.createMember),
-    path('get_member/', views.getMember),
+    path('member/', views.member),
     path('delete_member/', views.deleteMember),
     path('chat/<str:room_name>', views.chat),
 ]

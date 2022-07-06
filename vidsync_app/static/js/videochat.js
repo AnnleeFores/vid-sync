@@ -118,7 +118,7 @@ let toggleMic = async (e) => {
 // POST createmember data to server to be stored in database
 let createMember = async () => {
 
-    let response = await fetch(`/create_member/`, {
+    let response = await fetch(`/member/`, {
         method:'POST',
         headers: {
             'Content-Type':'application/json',
@@ -131,7 +131,7 @@ let createMember = async () => {
 
 // get member details from database
 let getMember = async (user) => {
-    let response = await fetch(`/get_member/?UID=${user.uid}&room_name=${CHANNEL}`)
+    let response = await fetch(`/member/?UID=${user.uid}&room_name=${CHANNEL}`)
     let member = await response.json()
     return member
 }
