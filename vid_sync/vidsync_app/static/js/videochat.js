@@ -178,7 +178,7 @@ let getmsg = async () => {
 
     // function to POST text chat to database
   let chat = async (e) => {
-      e.preventDefault()
+      e.preventDefault() //prevents default submission of form and reloading the site
 
 
       let text = e.target.text.value
@@ -202,10 +202,7 @@ let getmsg = async () => {
         let the_tid = await getmsg()
         let elem = document.getElementById(the_tid);
         elem.scrollIntoView({ block: 'center', inline: 'start' })
-
-    
   }
-
 
   
 // function to enable and disable chat section
