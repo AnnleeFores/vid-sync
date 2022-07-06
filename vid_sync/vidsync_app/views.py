@@ -30,7 +30,8 @@ def getToken(request):
     # using agora_token_builder module to generate token
     token = RtcTokenBuilder.buildTokenWithUid(appId, appCertificate, channelName, uid, role, privilegeExpiredTs)
     return JsonResponse({'token': token, 
-    'uid': uid}, 
+    'uid': uid,
+    'app_id': appId,}, 
     safe=False)
 
 # displays the index page

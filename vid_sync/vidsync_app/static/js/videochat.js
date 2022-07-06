@@ -1,5 +1,5 @@
 // collects details from session storage
-const APP_ID = '98677a6e35094190875e4203aaf61771'
+const APP_ID = sessionStorage.getItem('app_id')
 const CHANNEL = sessionStorage.getItem('room')
 const TOKEN = sessionStorage.getItem('token')
 let UID = Number(sessionStorage.getItem('UID'))
