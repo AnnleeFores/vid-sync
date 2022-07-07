@@ -20,7 +20,7 @@ When a user enters the room page, `videochat.js` retrieves information from sess
 
 ### Text Chat Part
 
-The chat box portion of `room.html` is normally hidden using Javascript; however, when the user clicks the chat button, it becomes visible. Chat works by saving the text chat with a timestamp on the database and retrieving it every 2000ms. This information is then displayed asynchronously in the chat box.
+The chat box portion of `room.html` is normally hidden using Javascript; however, when the user clicks the chat button, it becomes visible. Chat works by saving the text chat with a timestamp on the database and retrieving it every 1000ms. This information is then displayed asynchronously in the chat box.
 
 ## Distinctiveness and Complexity
 
