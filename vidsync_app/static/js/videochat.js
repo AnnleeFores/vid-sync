@@ -156,24 +156,28 @@ let getmsg = async () => {
     let chat = await chats.json()
 
     let chatmsg = ''
-    let tid = ''
 
     chat.forEach(element => {
 
-        tid = `t${element.id}`
+        let tid = `t${element.id}`
         let ifthere = document.getElementById(tid);
 
         if (ifthere === null) {
             if (Number(element.uid) === UID) {
                 chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-end"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg" style="max-width: 100px;">${element.chat}</span></div>`
-                document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
+                document.getElementById('forscroll').insertAdjacentHTML('beforebegin', chatmsg)
             } else {
                 chatmsg = `<div id="t${element.id}" style="word-wrap: break-word;" class="my-4 text-start"><p class="chatuser">${element.name} - ${element.timestamp}</p><span class="chatmsg">${element.chat}</span></div>`
-                document.getElementById('msgbox').insertAdjacentHTML('beforeend', chatmsg)
+                document.getElementById('forscroll').insertAdjacentHTML('beforebegin', chatmsg)
             }
         }
   });
-  return tid;
+
+  if (window.innerHeight + window.scrollY >= (document.body.offsetHeight - 10)) {
+        let elem = document.getElementById("forscroll");
+        elem.scrollIntoView({ block: 'center', inline: 'start' })
+  }
+
 }
 
     // function to POST text chat to database
@@ -199,9 +203,7 @@ let getmsg = async () => {
 
       
       
-        let the_tid = await getmsg()
-        let elem = document.getElementById(the_tid);
-        elem.scrollIntoView({ block: 'center', inline: 'start' })
+        
   }
 
   
