@@ -2,13 +2,13 @@
 
 **Vid Sync** is a fully functional video chat platform that includes peer-to-peer video and audio calls as well as text chat. its built based on the WebRTC (Web Real-Time Communications) protocol. WebRTC is an open-source protocol that lets you build applications that work on peer to peer connection. More about WebRTC can be found here: [https://webrtc.org/](https://webrtc.org/)
 
-In this project, I used Agora RTC SDK, which is an abstraction layer over WebRTC that, in exchange for money, reduces the complexity of building a WebRTC project. For this project, I chose Agora's free version, which includes 10000 minutes of Voice Call, Video Call, and Interactive Live Streaming. More about Agora: [https://www.agora.io/en/](https://www.agora.io/en/)
+In this project, I used Agora RTC SDK, which is an abstraction layer over WebRTC that, in exchange for money, reduces the complexity of building a WebRTC project. I chose Agora's free version, which includes 10000 minutes of Voice Call, Video Call, and Interactive Live Streaming. More about Agora: [https://www.agora.io/en/](https://www.agora.io/en/)
 
 ## Working
 
 Vid Sync application handles the video and audio call with Agora RTC. Text Chat is implemented using the Django server, a database, and some ajax. 
 
-The website consists primarily of two HTML pages: one for logging users into the room and another for displaying the video call and chat controls. By providing a room name and a user name, users can join or create a chat room. Other users can join this room by using the same room name. When a user joins the website, the website requests access to the camera and microphone feeds, and when the user agrees, the user feed is activated. To control these two feeds, there is also a camera and mic button. As new users join, the video feed will automatically adjust to accommodate them. The chat button opens the chat windows, where users can text chat. The close button terminates the user's call. If everyone leaves the room, the room is deleted.
+The website consists primarily of two HTML pages: one for logging users into the room and another for displaying the video call and chat controls. By providing a room name and a user name, users can join or create a chat room. Other users can join this room using the same room name. When a user joins the website, the website requests access to the camera and microphone feeds, and when the user agrees, the user feed is activated. To control these two feeds, there is also a camera and mic button. As new users join, the video feed will automatically adjust to accommodate them. The chat button opens the chat windows, where users can text chat. The close button terminates the user's call. If everyone leaves the room, the room is deleted.
 
 ## What’s contained in each part
 
@@ -31,21 +31,20 @@ This project primarily employs WebRTC to serve as a video chat platform. Because
 These are some of the other things I learned and put into practise during this project.
 
 - Data storage and retrieval from session storage.
-- Running API fetches every 2000ms.
-- How to Use Async/Await in JS.
+- Running API fetches every 2000ms to reduce chat latency.
+- How to Use Async/Await in JS
+- Developing RESTful APIs.
 - Designing a mobile-responsive frontend.
-
-I couldn't figure out how to do this project without `@csrf_exempt`. Even though I was able to get the CSRF to work on a single session using this [documentation](https://docs.djangoproject.com/en/4.0/ref/csrf/), the CSRF verification failed when multiple sessions were running concurrently. So I'm still working on a solution for this. For the time being, it works flawlessly with `@csrf_exempt`.
-
 
 ## How to run the application
 
 - Run to install required dependencies `pip install -r requirements.txt`
+- Then change directory `cd vid_sync`
 - Go to [https://www.agora.io/en/](https://www.agora.io/en/) and sign up for an account
 - Create a new project under **Project Management**. Give it a name and for **use case** select **social → chatroom**
 - Select **secured mode** under **Authentication Mechanism** and click submit.
 - Go to the **config** of that new project. Scroll down and wait for the **Web demo**: syncing to be completed.
-- Copy **App ID & Primary Certificate** and store it inside a `.env` file as
+- Copy **App ID & Primary Certificate** and store it inside a `.env` file as ****
 
 ```bash
 appId=<app_id_value>  
@@ -56,3 +55,7 @@ This is used for authentication and creation of token.
 
 - Run this to make migrations: `python manage.py migrate`
 - `python manage.py runserver` to run the application.
+
+## Note:
+
+I couldn't figure out how to do this project without `csrf_exempt`. Even though I was able to get the CSRF to work on a single session using this [documentation](https://docs.djangoproject.com/en/4.0/ref/csrf/), the CSRF verification failed when multiple sessions were running concurrently. So I'm still working on a solution for this. For the time being, it works flawlessly with `csrf_exempt`.
