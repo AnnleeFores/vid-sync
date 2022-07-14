@@ -12,7 +12,7 @@ In this project, I used Agora RTC SDK, which is an abstraction layer over WebRTC
 - Create a new project under **Project Management**. Give it a name and for **use case** select **social → chatroom**
 - Select **secured mode** under **Authentication Mechanism** and click submit.
 - Go to the **config** of that new project. Scroll down and wait for the **Web demo**: syncing to be completed.
-- Copy **App ID & Primary Certificate** and store it inside a `.env` file as ****
+- Copy **App ID & Primary Certificate** and store it inside a `.env` file as
 
 ```bash
 appId=<app_id_value>  
